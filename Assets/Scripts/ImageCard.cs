@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image), typeof(Button))]
-public class ImageCard : CardBehaviour
+public class ImageCard : Card
 {
     [SerializeField] private Image frontFaceImage;
     [SerializeField] private Image frontFaceBgImage;
@@ -45,12 +45,6 @@ public class ImageCard : CardBehaviour
     {
         _image.sprite = face;
     }
-
-    public bool Match(ImageCard card)
-    {
-        return frontFaceImage.sprite == card.frontFaceImage.sprite;
-    }
-
     private void OnCardClicked()
     {
         if (!IsFolded) return;
@@ -58,7 +52,11 @@ public class ImageCard : CardBehaviour
         Flip();
         CardsManager.Instance.RegisterCardForMatch(this);
     }
-
+    public override bool Match(Card card)
+    {
+        if (card is not ImageCard imageCard) return false;
+        return frontFaceImage.sprite == imageCard.frontFaceImage.sprite;
+    }
     public override void Flip()
     {
         _flipSequence.Restart();
