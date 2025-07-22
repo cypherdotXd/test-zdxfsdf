@@ -9,11 +9,13 @@ using UnityEngine.UI;
 
 public class CardsManager : MonoBehaviour
 {
+    [SerializeField] private List<Sprite> _possibleImages = new();
     [SerializeField] private GridLayoutGroup _cardsGridLayout;
     [SerializeField] private GameObject _slotPrefab;
     [SerializeField] private Transform _slotsParent;
-    [SerializeField] private int _slotsCount;
+    [SerializeField] private Vector2Int _slotsDimensions;
 
+    private int _difficultyLevel = 0;
     private List<Card> _allCards = new();
     private readonly Queue<ImageCard> _matchQueue = new();
     public static CardsManager Instance
@@ -27,7 +29,7 @@ public class CardsManager : MonoBehaviour
         {
             Instance = this;
         }
-        CreateSlots(_slotsCount);
+        CreateSlots(_slotsDimensions);
         _allCards = _slotsParent.GetComponentsInChildren<Card>().ToList();
     }
 
@@ -48,9 +50,30 @@ public class CardsManager : MonoBehaviour
         StartCoroutine(UpdateMatchedCardsRoutine(matched.Value, cardOne, cardTwo));
     }
 
-    private void CreateSlots(int n)
+    public void SetDifficultyLevel(int difficultyLevel)
     {
-        var _cardsGridEnabled = _cardsGridLayout.enabled; 
+        _difficultyLevel = difficultyLevel;
+    }
+
+    public void UpdateLevel()
+    {
+        int cols = _cardsGridLayout.constraintCount;
+        int rows = _cardsGridLayout.constraintCount;
+    }
+
+    private void CreateSlots(Vector2Int dimensions)
+    {
+        var n = dimensions.x * dimensions.y;
+        _cardsGridLayout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+        var gridRt = _cardsGridLayout.transform as RectTransform;
+        if (gridRt != null)
+        {
+            var widthPerUnit = gridRt.rect.width / dimensions.x;
+            var heightPerUnit = gridRt.rect.height / dimensions.y;
+            _cardsGridLayout.cellSize = new Vector2(0.8f * widthPerUnit, 0.7f * heightPerUnit);
+            _cardsGridLayout.spacing = new Vector2(0.2f * widthPerUnit, 0.3f * heightPerUnit);
+        }
+        _cardsGridLayout.constraintCount = dimensions.x;
         _cardsGridLayout.enabled = false;
         var presentSlotsCount = _slotsParent.childCount;
         var countDifference = presentSlotsCount - n;
