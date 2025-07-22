@@ -77,7 +77,8 @@ public class CardsManager : MonoBehaviour
         var rows = _slotsDimensions.y;
         var indices = Enumerable.Range(0, _slotsDimensions.x * _slotsDimensions.y).ToDictionary(i => i, i => true);
         var difficultyNormalized = difficultyLevel / 10f;
-        var pairMaxRange = (int)Mathf.Lerp(1, cols - 1, difficultyNormalized);
+        var pairMaxRange = (int)Mathf.Lerp(1, cols * rows, difficultyNormalized);
+        print($"difficulty normalized: {difficultyNormalized}, max range: {pairMaxRange}");
         var pairs = new Dictionary<int, int>();
         for (var i = 0; i < cols * rows/2; i++)
         {
