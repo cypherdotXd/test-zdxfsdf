@@ -423,10 +423,10 @@ RectTransform:
   - {fileID: 625939442}
   m_Father: {fileID: 1256590826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 146.66666, y: -38.49515}
-  m_SizeDelta: {x: 160, y: 36.990303}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &401294464
 MonoBehaviour:
@@ -475,14 +475,14 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2008600658}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 2008600662}
+        m_TargetAssemblyTypeName: CardsManager, Assembly-CSharp
+        m_MethodName: SetDifficultyLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -597,10 +597,10 @@ RectTransform:
   - {fileID: 731528029}
   m_Father: {fileID: 1474200475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 255.96426, y: -224.99998}
+  m_SizeDelta: {x: 80, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &493092605
 MonoBehaviour:
@@ -2049,10 +2049,10 @@ RectTransform:
   - {fileID: 929039867}
   m_Father: {fileID: 1256590826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 653.33325, y: -38.49515}
-  m_SizeDelta: {x: 160, y: 36.990303}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1352612792
 MonoBehaviour:
@@ -2101,14 +2101,14 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2008600658}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 2008600662}
+        m_TargetAssemblyTypeName: CardsManager, Assembly-CSharp
+        m_MethodName: SetDifficultyLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3153,10 +3153,10 @@ RectTransform:
   - {fileID: 1734851467}
   m_Father: {fileID: 1256590826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.99997, y: -38.49515}
-  m_SizeDelta: {x: 160, y: 36.990303}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1858508934
 MonoBehaviour:
@@ -3205,14 +3205,14 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2008600658}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 2008600662}
+        m_TargetAssemblyTypeName: CardsManager, Assembly-CSharp
+        m_MethodName: SetDifficultyLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3380,7 +3380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1928827189
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3458,7 +3458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2008600659
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3532,7 +3532,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9825aff772c9a47fa920a2fcf7c7e7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _possibleImages: []
+  _possibleImages:
+  - {fileID: 6883374710497114637, guid: 729259d7342094ab7bc96e949a828234, type: 3}
+  - {fileID: -8087821544675823655, guid: bf95380d17f6147969e92aac293ccbfc, type: 3}
+  - {fileID: -103861538468763190, guid: 9228d27eec4c84a5a925386c0aa99bbe, type: 3}
+  - {fileID: 444292765516371035, guid: 5b14f444dee17422b940fa5b9f3eccc8, type: 3}
+  - {fileID: -6699977836204243335, guid: 16dd60304d4764d0e9932a607f8957ba, type: 3}
+  - {fileID: -5253155210325345219, guid: a50b288366bec493592fae94caeb21fc, type: 3}
   _cardsGridLayout: {fileID: 1474200476}
   _slotPrefab: {fileID: 8025233394558093196, guid: e257328f20170418c887a7b53380ade6, type: 3}
   _slotsParent: {fileID: 1474200475}
@@ -3570,10 +3576,10 @@ RectTransform:
   - {fileID: 1181116604}
   m_Father: {fileID: 1474200475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 385.96426, y: -224.99998}
+  m_SizeDelta: {x: 80, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2059239852
 MonoBehaviour:
@@ -3771,7 +3777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7825716801410963774, guid: e257328f20170418c887a7b53380ade6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7825716801410963774, guid: e257328f20170418c887a7b53380ade6, type: 3}
       propertyPath: m_AnchorMin.x
@@ -3779,15 +3785,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7825716801410963774, guid: e257328f20170418c887a7b53380ade6, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7825716801410963774, guid: e257328f20170418c887a7b53380ade6, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7825716801410963774, guid: e257328f20170418c887a7b53380ade6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7825716801410963774, guid: e257328f20170418c887a7b53380ade6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3819,11 +3825,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7825716801410963774, guid: e257328f20170418c887a7b53380ade6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 125.964264
       objectReference: {fileID: 0}
     - target: {fileID: 7825716801410963774, guid: e257328f20170418c887a7b53380ade6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -224.99998
       objectReference: {fileID: 0}
     - target: {fileID: 7825716801410963774, guid: e257328f20170418c887a7b53380ade6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -43,7 +43,7 @@ public class ImageCard : Card
 
     public void SetFrontFace(Sprite face)
     {
-        _image.sprite = face;
+        frontFaceImage.sprite = face;
     }
     private void OnCardClicked()
     {

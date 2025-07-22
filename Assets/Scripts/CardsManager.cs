@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class CardsManager : MonoBehaviour
 {
@@ -15,9 +15,9 @@ public class CardsManager : MonoBehaviour
     [SerializeField] private Transform _slotsParent;
     [SerializeField] private Vector2Int _slotsDimensions;
 
-    private int _difficultyLevel = 0;
+    private int _difficultyLevel = 1; // Range 1 to 10
     private List<Card> _allCards = new();
-    private readonly Queue<ImageCard> _matchQueue = new();
+    private readonly Queue<Card> _matchQueue = new();
     public static CardsManager Instance
     {
         get; private set;
@@ -35,6 +35,7 @@ public class CardsManager : MonoBehaviour
 
     private void Start()
     {
+        ApplyLevelDifficulty();
         StartCoroutine(RevealAllCardsRoutine());
         AudioManager.Instance.PlayBgm("bg");
         AudioManager.Instance.SetBgmVolume(0.6f);
@@ -55,14 +56,46 @@ public class CardsManager : MonoBehaviour
         _difficultyLevel = difficultyLevel;
     }
 
-    public void UpdateLevel()
+    private void ApplyLevelDifficulty()
     {
-        int cols = _cardsGridLayout.constraintCount;
-        int rows = _cardsGridLayout.constraintCount;
+        var pairs = GetRandomPairs(_difficultyLevel);
+        foreach (var (i, j) in pairs)
+        {
+            var sprite = _possibleImages[i % _possibleImages.Count];
+            if (_allCards[i] is not ImageCard imageCard1) continue;
+            imageCard1.SetFrontFace(sprite);
+            if (_allCards[j] is not ImageCard imageCard2) continue;
+            imageCard2.SetFrontFace(sprite);
+        }
+    }
+
+    private Dictionary<int, int> GetRandomPairs(int difficultyLevel)
+    {
+        print($"Applying difficulty level {difficultyLevel}");
+        var cols = _slotsDimensions.x;
+        var rows = _slotsDimensions.y;
+        var indices = Enumerable.Range(0, _slotsDimensions.x * _slotsDimensions.y).ToDictionary(i => i, i => true);
+        var difficultyNormalized = difficultyLevel / 10f;
+        var pairMaxRange = (int)Mathf.Lerp(1, cols - 1, difficultyNormalized);
+        var pairs = new Dictionary<int, int>();
+        for (var i = 0; i < cols * rows/2; i++)
+        {
+            var first = indices.ElementAt(0).Key;
+            var second = first + Random.Range(1, pairMaxRange);
+            while (!indices.ContainsKey(second) && pairMaxRange > 1)
+            {
+                second = first + Random.Range(1, pairMaxRange);
+            }
+            indices.Remove(first);
+            indices.Remove(second);
+            pairs.Add(first, second);
+        }
+        return pairs;
     }
 
     private void CreateSlots(Vector2Int dimensions)
     {
+        // Setup Grid Layout
         var n = dimensions.x * dimensions.y;
         _cardsGridLayout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
         var gridRt = _cardsGridLayout.transform as RectTransform;
@@ -70,27 +103,27 @@ public class CardsManager : MonoBehaviour
         {
             var widthPerUnit = gridRt.rect.width / dimensions.x;
             var heightPerUnit = gridRt.rect.height / dimensions.y;
-            _cardsGridLayout.cellSize = new Vector2(0.8f * widthPerUnit, 0.7f * heightPerUnit);
-            _cardsGridLayout.spacing = new Vector2(0.2f * widthPerUnit, 0.3f * heightPerUnit);
+            _cardsGridLayout.cellSize = new Vector2(0.8f * widthPerUnit, 0.6f * heightPerUnit);
+            _cardsGridLayout.spacing = new Vector2(0.2f * widthPerUnit, 0.4f * heightPerUnit);
         }
         _cardsGridLayout.constraintCount = dimensions.x;
         _cardsGridLayout.enabled = false;
+        
         var presentSlotsCount = _slotsParent.childCount;
         var countDifference = presentSlotsCount - n;
         var start = countDifference > 0 ? n : presentSlotsCount;
+        
+        // Handle extras
         for (var i = start; i < start + Mathf.Abs(countDifference); i++)
         {
             if (countDifference > 0)
-            {
                 _slotsParent.GetChild(i).gameObject.SetActive(false);
-            }
             else
-            {
                 Instantiate(_slotPrefab, _slotsParent);
-            }
         }
         
-        for (int i = 0; i < n; i++)
+        // Set All active 
+        for (var i = 0; i < n; i++)
         {
             _slotsParent.GetChild(i).gameObject.SetActive(true);
         }
