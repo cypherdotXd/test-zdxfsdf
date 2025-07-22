@@ -16,6 +16,7 @@ public class CardsManager : MonoBehaviour
     [SerializeField] private Vector2Int _slotsDimensions;
 
     private int _difficultyLevel = 1; // Range 1 to 10
+    private int _matchedCardsCount;
     private List<Card> _allCards = new();
     private readonly Queue<Card> _matchQueue = new();
     public static CardsManager Instance
@@ -89,6 +90,7 @@ public class CardsManager : MonoBehaviour
             indices.Remove(first);
             indices.Remove(second);
             pairs.Add(first, second);
+            print($"first: {first}; second: {second}");
         }
         return pairs;
     }
@@ -145,6 +147,13 @@ public class CardsManager : MonoBehaviour
         return imageCard1.Match(imageCard2);
     }
 
+    private void CheckLevelCompletion()
+    {
+        if (_matchedCardsCount < _allCards.Count)
+            return;
+        LevelManager.NotifyLevelCompleted();
+    }
+
     private IEnumerator RevealAllCardsRoutine(float duration = 1)
     {
         yield return null;
@@ -162,6 +171,7 @@ public class CardsManager : MonoBehaviour
             card2.transform.DOScale(Vector3.zero, 0.2f);
             AudioManager.Instance.PlaySfx("right");
             LevelManager.NotifyCardsMatched(card1, card2);
+            _matchedCardsCount += 2;
         }
         else
         {
@@ -171,5 +181,7 @@ public class CardsManager : MonoBehaviour
             card2.Fold();
             AudioManager.Instance.PlaySfx("wrong");
         }
+
+        CheckLevelCompletion();
     }
 }
