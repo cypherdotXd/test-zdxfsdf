@@ -17,6 +17,8 @@ public class CardsManager : MonoBehaviour
 
     private int _difficultyLevel = 1; // Range 1 to 10
     private int _matchedCardsCount;
+    private const int MatchComboThreshold = 3;
+    private int _matchComboCounter;
     private List<Card> _allCards = new();
     private readonly Queue<Card> _matchQueue = new();
     public static CardsManager Instance
@@ -155,6 +157,13 @@ public class CardsManager : MonoBehaviour
         LevelManager.NotifyLevelCompleted();
     }
 
+    private void CheckMatchCombo()
+    {
+        if (_matchComboCounter != MatchComboThreshold) return;
+        print("Triple Combo detected");
+        _matchComboCounter = 0;
+    }
+
     private IEnumerator RevealAllCardsRoutine(float duration = 1)
     {
         yield return null;
@@ -172,6 +181,7 @@ public class CardsManager : MonoBehaviour
             card2.transform.DOScale(Vector3.zero, 0.2f);
             AudioManager.Instance.PlaySfx("right");
             LevelManager.NotifyCardsMatched(card1, card2);
+            _matchComboCounter++;
             _matchedCardsCount += 2;
         }
         else
@@ -181,8 +191,10 @@ public class CardsManager : MonoBehaviour
             card1.Fold();
             card2.Fold();
             AudioManager.Instance.PlaySfx("wrong");
+            _matchComboCounter = 0;
         }
 
         CheckLevelCompletion();
+        CheckMatchCombo();
     }
 }
