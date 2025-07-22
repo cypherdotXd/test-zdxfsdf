@@ -34,6 +34,8 @@ public class CardsManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(RevealAllCardsRoutine());
+        AudioManager.Instance.PlayBgm("bg");
+        AudioManager.Instance.SetBgmVolume(0.6f);
     }
 
     public void RegisterCardForMatch(ImageCard imageCard)
@@ -102,12 +104,16 @@ public class CardsManager : MonoBehaviour
         {
             card1.transform.DOScale(Vector3.zero, 0.2f);
             card2.transform.DOScale(Vector3.zero, 0.2f);
+            AudioManager.Instance.PlaySfx("right");
             LevelManager.NotifyCardsMatched(card1, card2);
         }
         else
         {
+            card1.transform.DOShakePosition(0.6f, strength:10, vibrato:20, randomness:0);
+            card2.transform.DOShakePosition(0.6f, strength:10, vibrato:20, randomness:0);
             card1.Fold();
             card2.Fold();
+            AudioManager.Instance.PlaySfx("wrong");
         }
     }
 }
