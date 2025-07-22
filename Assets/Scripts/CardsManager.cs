@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,8 @@ public class CardsManager : MonoBehaviour
     [SerializeField] private GameObject _slotPrefab;
     [SerializeField] private Transform _slotsParent;
     [SerializeField] private int _slotsCount;
-    
+
+    private List<Card> _allCards => _slotsParent.GetComponentsInChildren<Card>().ToList();
     private readonly Queue<ImageCard> _matchQueue = new();
     public static CardsManager Instance
     {
@@ -24,11 +26,12 @@ public class CardsManager : MonoBehaviour
         {
             Instance = this;
         }
+        CreateSlots(_slotsCount);
     }
 
     private void Start()
     {
-        CreateSlots(_slotsCount);
+        StartCoroutine(RevealAllCardsRoutine());
     }
 
     public void RegisterCardForMatch(ImageCard imageCard)
@@ -38,10 +41,10 @@ public class CardsManager : MonoBehaviour
         _matchQueue.Enqueue(imageCard);
         var matched = TryMatch(out var cardOne, out var cardTwo);
         if (matched == null) return;
-        StartCoroutine(UpdateMatchedCards(matched.Value, cardOne, cardTwo));
+        StartCoroutine(UpdateMatchedCardsRoutine(matched.Value, cardOne, cardTwo));
     }
 
-    public void CreateSlots(int n)
+    private void CreateSlots(int n)
     {
         var _cardsGridEnabled = _cardsGridLayout.enabled; 
         _cardsGridLayout.enabled = false;
@@ -82,7 +85,15 @@ public class CardsManager : MonoBehaviour
         return imageCard1.Match(imageCard2);
     }
 
-    private IEnumerator UpdateMatchedCards(bool matched, Card card1, Card card2, float delay = 0.5f)
+    private IEnumerator RevealAllCardsRoutine(float duration = 1)
+    {
+        yield return null;
+        _allCards.ForEach(card => card.Flip());
+        yield return new WaitForSeconds(duration);
+        _allCards.ForEach(card => card.Fold());
+    }
+    
+    private IEnumerator UpdateMatchedCardsRoutine(bool matched, Card card1, Card card2, float delay = 0.5f)
     {
         yield return new WaitForSeconds(delay);
         if (matched)

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public abstract class Card : MonoBehaviour
+public abstract class Card : MonoBehaviour // Card => ImageCard, TextCard, 3dCard
 {
     [SerializeField] private Sprite backFace;
     
