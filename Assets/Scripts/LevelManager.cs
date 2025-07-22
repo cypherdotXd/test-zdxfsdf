@@ -1,20 +1,23 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public static event Action TurnPlayed;
-    public static event Action<Card, Card> CardsMatched;
+    public static event Action<int> TurnPlayed;
+    public static event Action<int, Card, Card> CardsMatched;
+    
+    public static int turnsPlayed { get; private set; }
+    public static int matchCount { get; private set; }
 
     public static void NotifyTurnPlayed()
     {
-        TurnPlayed?.Invoke();
+        turnsPlayed++;
+        TurnPlayed?.Invoke(turnsPlayed);
     }
 
     public static void NotifyCardsMatched(Card card1, Card card2)
     {
-        CardsMatched?.Invoke(card1, card2);
+        matchCount++;
+        CardsMatched?.Invoke(matchCount, card1, card2);
     }
 }

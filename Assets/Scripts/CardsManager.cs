@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,7 @@ public class CardsManager : MonoBehaviour
     [SerializeField] private Transform _slotsParent;
     [SerializeField] private int _slotsCount;
 
-    private List<Card> _allCards => _slotsParent.GetComponentsInChildren<Card>().ToList();
+    private List<Card> _allCards = new();
     private readonly Queue<ImageCard> _matchQueue = new();
     public static CardsManager Instance
     {
@@ -27,6 +28,7 @@ public class CardsManager : MonoBehaviour
             Instance = this;
         }
         CreateSlots(_slotsCount);
+        _allCards = _slotsParent.GetComponentsInChildren<Card>().ToList();
     }
 
     private void Start()
@@ -98,8 +100,8 @@ public class CardsManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (matched)
         {
-            card1.gameObject.SetActive(false);
-            card2.gameObject.SetActive(false);
+            card1.transform.DOScale(Vector3.zero, 0.2f);
+            card2.transform.DOScale(Vector3.zero, 0.2f);
             LevelManager.NotifyCardsMatched(card1, card2);
         }
         else
