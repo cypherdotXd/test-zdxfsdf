@@ -41,10 +41,16 @@ public class ImageCard : Card
             .Pause();
     }
 
+    public void ToggleButtonInteractable(bool value)
+    {
+        _button.interactable = value;
+    }
+
     public void SetFrontFace(Sprite face)
     {
         frontFaceImage.sprite = face;
     }
+    
     private void OnCardClicked()
     {
         if (!IsFolded) return;
@@ -52,11 +58,13 @@ public class ImageCard : Card
         Flip();
         CardsManager.Instance.RegisterCardForMatch(this);
     }
+    
     public override bool Match(Card card)
     {
         if (card is not ImageCard imageCard) return false;
         return frontFaceImage.sprite == imageCard.frontFaceImage.sprite;
     }
+    
     public override void Flip()
     {
         _flipSequence.Restart();

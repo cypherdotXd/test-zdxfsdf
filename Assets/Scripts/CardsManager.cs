@@ -169,7 +169,11 @@ public class CardsManager : MonoBehaviour
         yield return null;
         _allCards.ForEach(card => card.Flip());
         yield return new WaitForSeconds(duration);
-        _allCards.ForEach(card => card.Fold());
+        _allCards.ForEach(card =>
+        {
+            card.Fold();
+            (card as ImageCard)?.ToggleButtonInteractable(true);
+        });
     }
     
     private IEnumerator UpdateMatchedCardsRoutine(bool matched, Card card1, Card card2, float delay = 0.5f)
