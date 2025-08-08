@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Frog Transparent Background_0: -8087821544675823655
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

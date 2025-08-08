@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e9b663b5fabde4311a56b3c00adb3281
+guid: a5bc5da58dd2844aca9c13cee323a4ba
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3691463601059337291
-    second: DOTweenMiniIcon_0
+      213: -1057112897304440632
+    second: White Square Rounded Icon 256_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,13 +46,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 33, y: 33, z: 32, w: 30}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -126,22 +126,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DOTweenMiniIcon_0
+      name: White Square Rounded Icon 256_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 9
-        height: 9
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b441d624696ba3330800000000000000
-      internalID: 3691463601059337291
+      spriteID: 8c05fa4bb616451f0800000000000000
+      internalID: -1057112897304440632
       vertices: []
       indices: 
       edges: []
@@ -149,15 +149,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DOTweenMiniIcon_0: 3691463601059337291
+      White Square Rounded Icon 256_0: -1057112897304440632
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

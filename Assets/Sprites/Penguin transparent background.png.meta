@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Penguin transparent background_0: -6699977836204243335
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Kul 35 Remove Background_0: 7464014970975226444
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

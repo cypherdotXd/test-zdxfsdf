@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e9b663b5fabde4311a56b3c00adb3281
+guid: ddab51bb5b90a4a888488842fb673d39
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3691463601059337291
-    second: DOTweenMiniIcon_0
+      213: -6960903314270103029
+    second: Rock 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DOTweenMiniIcon_0
+      name: Rock 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 9
-        height: 9
+        x: 97
+        y: 107
+        width: 299
+        height: 299
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b441d624696ba3330800000000000000
-      internalID: 3691463601059337291
+      spriteID: b0a571de057e56f90800000000000000
+      internalID: -6960903314270103029
       vertices: []
       indices: 
       edges: []
@@ -157,7 +157,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DOTweenMiniIcon_0: 3691463601059337291
+      Rock 1_0: -6960903314270103029
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

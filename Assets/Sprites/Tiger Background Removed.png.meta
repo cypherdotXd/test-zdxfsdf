@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tiger Background Removed_0: -5253155210325345219
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

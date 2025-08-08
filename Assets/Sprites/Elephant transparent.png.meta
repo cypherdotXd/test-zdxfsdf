@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Elephant transparent_0: 6883374710497114637
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
